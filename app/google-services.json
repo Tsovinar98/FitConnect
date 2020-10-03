@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "832530283932",
+    "firebase_url": "https://fitconnect-c9410.firebaseio.com",
+    "project_id": "fitconnect-c9410",
+    "storage_bucket": "fitconnect-c9410.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:832530283932:android:c696954552f81afdc7dc59",
+        "android_client_info": {
+          "package_name": "com.example.fitconnect"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "832530283932-37mv41611pp3ir2ros3adu8sq12ohpia.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.fitconnect",
+            "certificate_hash": "cb461c1dda15f8b106783b2ed19d9b2f22fd6e63"
+          }
+        },
+        {
+          "client_id": "832530283932-5cebvni715okt38qe0c4jm59575nvbme.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3yx9CnN1FbUy3jLfnkcXk5d4dFHyL6G0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "832530283932-5cebvni715okt38qe0c4jm59575nvbme.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
