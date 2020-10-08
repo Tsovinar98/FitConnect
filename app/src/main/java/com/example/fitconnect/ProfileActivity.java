@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseUser;
 
-public class MainActivity extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity {
 
     TextView test;
     FirebaseUser currentUser;
@@ -20,7 +20,5 @@ public class MainActivity extends AppCompatActivity {
         String name = currentUser.getDisplayName();
         test.setText(name);
         System.out.println(name);
-
-
     }
 }

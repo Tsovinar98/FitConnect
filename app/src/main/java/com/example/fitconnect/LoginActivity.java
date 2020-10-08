@@ -17,8 +17,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import java.util.EventListener;
-
 public class LoginActivity extends AppCompatActivity {
 
     Button button_signupButton;
@@ -75,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = auth.getCurrentUser();
-                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
                             intent.putExtra("currentUser", user);
                             startActivity(intent);
                             //updateUI(user);

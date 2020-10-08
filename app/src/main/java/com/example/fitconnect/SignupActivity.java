@@ -54,7 +54,7 @@ public class SignupActivity extends AppCompatActivity {
                             UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
                                     .setDisplayName(name).build();
                             user.updateProfile(profileUpdates);
-                            Intent intent = new Intent(SignupActivity.this, MainActivity.class);
+                            Intent intent = new Intent(SignupActivity.this, ProfileActivity.class);
                             intent.putExtra("currentUser", user);
                             startActivity(intent);
                             //updateUI(user);
