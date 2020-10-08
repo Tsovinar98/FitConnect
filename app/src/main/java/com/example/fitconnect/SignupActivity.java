@@ -31,7 +31,7 @@ public class SignupActivity extends AppCompatActivity {
         button_signup = findViewById(R.id.button_su_signup);
         editText_email = findViewById(R.id.editText_su_email);
         editText_password = findViewById(R.id.editText_su_password);
-        editText_name = findViewById(R.id.editText_su_displayName);
+        editText_name = findViewById(R.id.editText_su_firstName);
         button_signup.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 signUp();

@@ -12,12 +12,13 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/editText_su_displayName"
+            android:id="@+id/editText_su_firstName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="First Name"
             android:inputType="textPersonName"
-            android:text="Name" />
+            android:text="First Name" />
 
         <EditText
             android:id="@+id/editText_su_email"
