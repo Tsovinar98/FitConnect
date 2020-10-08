@@ -13,7 +13,7 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_profile);
 
         currentUser = (FirebaseUser) getIntent().getExtras().get("currentUser");
         test = findViewById(R.id.textView_test);
