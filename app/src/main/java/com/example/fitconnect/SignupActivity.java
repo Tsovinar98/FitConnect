@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -22,6 +23,7 @@ public class SignupActivity extends AppCompatActivity {
     EditText editText_email;
     EditText editText_password;
     EditText editText_name;
+    ProgressBar progressBar_loadingSpinner;
     private static final String TAG = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +34,11 @@ public class SignupActivity extends AppCompatActivity {
         editText_email = findViewById(R.id.editText_su_email);
         editText_password = findViewById(R.id.editText_su_password);
         editText_name = findViewById(R.id.editText_su_firstName);
+        progressBar_loadingSpinner = findViewById(R.id.progressBar_su_loadingSpinner);
+        progressBar_loadingSpinner.setVisibility(View.INVISIBLE);
         button_signup.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
+                progressBar_loadingSpinner.setVisibility(View.VISIBLE);
                 signUp();
             }
         });
@@ -65,7 +70,7 @@ public class SignupActivity extends AppCompatActivity {
                                     Toast.LENGTH_SHORT).show();
                             //updateUI(null);
                         }
-
+                        progressBar_loadingSpinner.setVisibility(View.INVISIBLE);
                         // ...
                     }
                 });

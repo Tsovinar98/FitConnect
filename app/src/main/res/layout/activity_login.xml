@@ -51,4 +51,10 @@
         android:text="FORGOT PASSWORD"
         tools:text="FORGOT PASSWORD" />
 
+    <ProgressBar
+        android:id="@+id/progressBar_loadingSpinner"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>

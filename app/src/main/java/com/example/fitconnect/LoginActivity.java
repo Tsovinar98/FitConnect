@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Button;
 import android.widget.Toast;
@@ -24,6 +25,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText editText_email;
     EditText editText_password;
     TextView textView_forgotPassword;
+    ProgressBar progressBar_loadingSpinner;
     public static FirebaseAuth auth;
     private static final String TAG = "";
     @Override
@@ -37,8 +39,8 @@ public class LoginActivity extends AppCompatActivity {
         editText_email = findViewById(R.id.editText_email);
         editText_password = findViewById(R.id.editText_password);
         textView_forgotPassword = findViewById(R.id.textView_forgotPassword);
-
-
+        progressBar_loadingSpinner = findViewById(R.id.progressBar_loadingSpinner);
+        progressBar_loadingSpinner.setVisibility(View.INVISIBLE);
         button_signupButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
@@ -56,6 +58,7 @@ public class LoginActivity extends AppCompatActivity {
 
         button_loginButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
+                progressBar_loadingSpinner.setVisibility(View.VISIBLE);
                 login();
             }
         });
@@ -84,7 +87,7 @@ public class LoginActivity extends AppCompatActivity {
                                     Toast.LENGTH_SHORT).show();
                             //updateUI(null);
                         }
-
+                        progressBar_loadingSpinner.setVisibility(View.INVISIBLE);
                     }
                 });
     }
