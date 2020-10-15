@@ -22,7 +22,10 @@ public class SignupActivity extends AppCompatActivity {
     Button button_signup;
     EditText editText_email;
     EditText editText_password;
-    EditText editText_name;
+    EditText editText_firstName;
+    EditText editText_lastName;
+    EditText editText_username;
+    Button button_selectLocation;
     ProgressBar progressBar_loadingSpinner;
     private static final String TAG = "";
     @Override
@@ -30,12 +33,19 @@ public class SignupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
+        //initialize all elements
         button_signup = findViewById(R.id.button_su_signup);
         editText_email = findViewById(R.id.editText_su_email);
         editText_password = findViewById(R.id.editText_su_password);
-        editText_name = findViewById(R.id.editText_su_firstName);
+        editText_firstName = findViewById(R.id.editText_su_firstName);
+        editText_lastName = findViewById(R.id.editText_su_lastName);
+        editText_username = findViewById(R.id.editText_su_username);
+        button_selectLocation = findViewById(R.id.button_su_selectLocation);
         progressBar_loadingSpinner = findViewById(R.id.progressBar_su_loadingSpinner);
+
+        //set the spinner to invisible
         progressBar_loadingSpinner.setVisibility(View.INVISIBLE);
+
         button_signup.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 progressBar_loadingSpinner.setVisibility(View.VISIBLE);
@@ -47,7 +57,7 @@ public class SignupActivity extends AppCompatActivity {
     private void signUp(){
         String email = editText_email.getText().toString();
         String password = editText_password.getText().toString();
-        final String name = editText_name.getText().toString();
+        final String name = editText_firstName.getText().toString();
         LoginActivity.auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
