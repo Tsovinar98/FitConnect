@@ -2,20 +2,57 @@ package com.example.fitconnect;
 
 import android.location.Location;
 
+import java.util.ArrayList;
+
 public class UserInformation {
 
     private String displayName;
     private String firstName;
     private String lastName;
-    private String phoneNumber;
+    private String email;
+    private String aboutMe;
+    private String photoUrl;
     private Location location;
+    private ArrayList<ActivityCategory> preferredActivities;
 
-    public UserInformation(String displayName, String firstName, String lastName, String phoneNumber, Location location) {
+    public UserInformation(String displayName, String firstName, String lastName, String email, Location location) {
         this.displayName = displayName;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.phoneNumber = phoneNumber;
+        this.email = email;
         this.location = location;
+        this.preferredActivities = new ArrayList<>();
+        this.aboutMe = "";
+    }
+
+    public UserInformation(String email) {
+        this.email = email;
+        this.preferredActivities = new ArrayList<>();
+        this.aboutMe = "";
+    }
+
+    public String getPhotoUrl() {
+        return photoUrl;
+    }
+
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getAboutMe() {
+        return aboutMe;
+    }
+
+    public void setAboutMe(String aboutMe) {
+        this.aboutMe = aboutMe;
+    }
+
+    public ArrayList<ActivityCategory> getPreferredActivities() {
+        return preferredActivities;
     }
 
     public String getDisplayName() {
@@ -40,14 +77,6 @@ public class UserInformation {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
     }
 
     public Location getLocation() {
