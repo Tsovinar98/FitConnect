@@ -12,29 +12,50 @@
         android:orientation="vertical">
 
         <EditText
+            android:id="@+id/editText_su_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Username"
+            android:inputType="textPersonName" />
+
+        <EditText
             android:id="@+id/editText_su_firstName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="First Name"
-            android:inputType="textPersonName"
-            android:text="First Name" />
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/editText_su_lastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Last Name"
+            android:inputType="textPersonName" />
 
         <EditText
             android:id="@+id/editText_su_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Email" />
+            android:hint="Email"
+            android:inputType="textPersonName" />
 
         <EditText
             android:id="@+id/editText_su_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Password" />
+            android:hint="Password"
+            android:inputType="textPersonName" />
+
+        <Button
+            android:id="@+id/button_su_selectLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select My Location" />
 
         <Button
             android:id="@+id/button_su_signup"
