@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">FitConnect</string>
+    <string name="forgot_password">Forgot password? <u>Reset</u></string>
+    <string name="signup">Don\'t have an account? <u>Sign Up</u></string>
 </resources>
