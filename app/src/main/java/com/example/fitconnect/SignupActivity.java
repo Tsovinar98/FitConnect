@@ -1,10 +1,8 @@
 package com.example.fitconnect;
-
 import android.Manifest;
 import android.content.Intent;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -18,7 +16,6 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -27,12 +24,15 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 import java.util.Locale;
 
 public class SignupActivity extends AppCompatActivity {
 
+    DatabaseReference databaseUsers;
     Button button_signup;
     EditText editText_email;
     EditText editText_password;
@@ -63,7 +63,7 @@ public class SignupActivity extends AppCompatActivity {
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         //set the spinner to invisible
         progressBar_loadingSpinner.setVisibility(View.INVISIBLE);
-
+        databaseUsers = FirebaseDatabase.getInstance().getReference("users");
         button_selectLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -121,7 +121,7 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     private void signUp(){
-        String email = editText_email.getText().toString();
+        final String email = editText_email.getText().toString();
         String password = editText_password.getText().toString();
         final String name = editText_firstName.getText().toString();
         LoginActivity.auth.createUserWithEmailAndPassword(email, password)
@@ -135,6 +135,9 @@ public class SignupActivity extends AppCompatActivity {
                             UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
                                     .setDisplayName(name).build();
                             user.updateProfile(profileUpdates);
+                            String id = databaseUsers.push().getKey();
+                            UserInformation userInformation = new UserInformation("Ryansucks", "Ryan", "Anderson", "ryan@gmail.com", null);
+                            databaseUsers.child(id).setValue(userInformation);
                             Intent intent = new Intent(SignupActivity.this, ProfileActivity.class);
                             intent.putExtra("currentUser", user);
                             startActivity(intent);
