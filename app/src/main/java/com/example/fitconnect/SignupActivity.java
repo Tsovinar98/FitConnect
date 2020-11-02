@@ -6,6 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
@@ -26,6 +28,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 
+import java.util.List;
+import java.util.Locale;
+
 public class SignupActivity extends AppCompatActivity {
 
     Button button_signup;
@@ -37,6 +42,7 @@ public class SignupActivity extends AppCompatActivity {
     TextView textView_location;
     Button button_selectLocation;
     ProgressBar progressBar_loadingSpinner;
+    Double latitude, longitude;
     private FusedLocationProviderClient fusedLocationProviderClient;
     private static final String TAG = "";
     @Override
@@ -68,9 +74,10 @@ public class SignupActivity extends AppCompatActivity {
                             @Override
                             public void onSuccess(Location location) {
                                 if (location!= null){
-                                    double lat = location.getLatitude();
-                                    double longt = location.getLongitude();
-                                    textView_location.setText(lat + ", " + longt);
+                                    latitude = location.getLatitude();
+                                    longitude= location.getLongitude();
+                                    String address = getCompleteAddressString(latitude, longitude);
+                                    textView_location.setText(address);
                                 }
                             }
                         });
@@ -87,6 +94,30 @@ public class SignupActivity extends AppCompatActivity {
                 signUp();
             }
         });
+    }
+
+    private String getCompleteAddressString(double LATITUDE, double LONGITUDE) {
+        String strAdd = "";
+        Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+        try {
+            List<Address> addresses = geocoder.getFromLocation(LATITUDE, LONGITUDE, 1);
+            if (addresses != null) {
+                Address returnedAddress = addresses.get(0);
+                StringBuilder strReturnedAddress = new StringBuilder("");
+
+                for (int i = 0; i <= returnedAddress.getMaxAddressLineIndex(); i++) {
+                    strReturnedAddress.append(returnedAddress.getAddressLine(i)).append("\n");
+                }
+                strAdd = strReturnedAddress.toString();
+                Log.w("My Current loction address", strReturnedAddress.toString());
+            } else {
+                Log.w("My Current loction address", "No Address returned!");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.w("My Current loction address", "Canont get Address!");
+        }
+        return strAdd;
     }
 
     private void signUp(){
