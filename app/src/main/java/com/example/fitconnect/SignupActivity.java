@@ -1,17 +1,26 @@
 package com.example.fitconnect;
 
+import android.Manifest;
 import android.content.Intent;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseUser;
@@ -25,8 +34,10 @@ public class SignupActivity extends AppCompatActivity {
     EditText editText_firstName;
     EditText editText_lastName;
     EditText editText_username;
+    TextView textView_location;
     Button button_selectLocation;
     ProgressBar progressBar_loadingSpinner;
+    private FusedLocationProviderClient fusedLocationProviderClient;
     private static final String TAG = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,10 +52,34 @@ public class SignupActivity extends AppCompatActivity {
         editText_lastName = findViewById(R.id.editText_su_lastName);
         editText_username = findViewById(R.id.editText_su_username);
         button_selectLocation = findViewById(R.id.button_su_selectLocation);
+        textView_location = findViewById(R.id.textView_su_location);
         progressBar_loadingSpinner = findViewById(R.id.progressBar_su_loadingSpinner);
-
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         //set the spinner to invisible
         progressBar_loadingSpinner.setVisibility(View.INVISIBLE);
+
+        button_selectLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                    if(getApplicationContext().checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) ==
+                            PackageManager.PERMISSION_GRANTED){
+                        fusedLocationProviderClient.getLastLocation().addOnSuccessListener(new OnSuccessListener<Location>() {
+                            @Override
+                            public void onSuccess(Location location) {
+                                if (location!= null){
+                                    double lat = location.getLatitude();
+                                    double longt = location.getLongitude();
+                                    textView_location.setText(lat + ", " + longt);
+                                }
+                            }
+                        });
+                    }else{
+                        requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 200);
+                    }
+                }
+            }
+        });
 
         button_signup.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){

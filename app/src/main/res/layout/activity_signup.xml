@@ -51,6 +51,11 @@
             android:hint="Password"
             android:inputType="textPersonName" />
 
+        <TextView
+            android:id="@+id/textView_su_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
         <Button
             android:id="@+id/button_su_selectLocation"
             android:layout_width="match_parent"
