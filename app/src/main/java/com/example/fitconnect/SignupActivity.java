@@ -175,6 +175,7 @@ public class SignupActivity extends AppCompatActivity {
                             databaseUsers.child(id).setValue(userInformation);
                             Intent intent = new Intent(SignupActivity.this, ProfileActivity.class);
                             intent.putExtra("currentUser", user);
+                            CurrentUser.setCurrentUser(userInformation);
                             startActivity(intent);
                             //updateUI(user);
                         } else {

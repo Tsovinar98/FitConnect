@@ -11,14 +11,5 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="-87dp"
-        tools:layout_editor_absoluteY="-154dp">
-
-        <TextView
-            android:id="@+id/textView_top"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="MainActivity"
-            android:textSize="30sp" />
-
-    </LinearLayout>
+        tools:layout_editor_absoluteY="-154dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
