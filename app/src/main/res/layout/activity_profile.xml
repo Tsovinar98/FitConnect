@@ -14,7 +14,7 @@
         tools:layout_editor_absoluteY="-154dp">
 
         <TextView
-            android:id="@+id/textView_test"
+            android:id="@+id/textView_top"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="MainActivity"

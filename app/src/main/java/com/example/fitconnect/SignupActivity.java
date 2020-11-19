@@ -11,8 +11,11 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,6 +36,9 @@ import java.util.Locale;
 public class SignupActivity extends AppCompatActivity {
 
     DatabaseReference databaseUsers;
+    ImageView imageView_soccerball;
+    TextView textView_top;
+    TextView textView_bottom;
     Button button_signup;
     EditText editText_email;
     EditText editText_password;
@@ -62,8 +68,16 @@ public class SignupActivity extends AppCompatActivity {
         button_selectLocation = findViewById(R.id.button_su_selectLocation);
         textView_location = findViewById(R.id.textView_su_location);
         progressBar_loadingSpinner = findViewById(R.id.progressBar_su_loadingSpinner);
+        textView_top = findViewById(R.id.textView_top);
+        textView_bottom = findViewById(R.id.textView_bottom);
+
+        Animation scrollAnimation = AnimationUtils.loadAnimation(this,R.anim.scroll);
+        textView_top.startAnimation(scrollAnimation);
+        textView_bottom.startAnimation(scrollAnimation);
+
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         //set the spinner to invisible
+        textView_location.setVisibility(View.GONE);
         progressBar_loadingSpinner.setVisibility(View.INVISIBLE);
         databaseUsers = FirebaseDatabase.getInstance().getReference("users");
         button_selectLocation.setOnClickListener(new View.OnClickListener() {
@@ -79,7 +93,26 @@ public class SignupActivity extends AppCompatActivity {
                                     latitude = location.getLatitude();
                                     longitude= location.getLongitude();
                                     address = getCompleteAddressString(latitude, longitude);
-                                    textView_location.setText(address);
+                                    String addressLine1 = "", addressLine2 = "";
+                                    int numCommas = 0;
+                                    for(int i = 0; i < address.length(); i++){
+                                        if(address.charAt(i)==','){
+                                            numCommas++;
+                                            if(numCommas == 1) {
+                                                numCommas++;
+                                                continue;
+                                            }
+                                        }
+                                        if(numCommas > 1){
+                                            addressLine2+=address.charAt(i);
+                                        }else{
+                                            addressLine1+=address.charAt(i);
+                                        }
+                                    }
+                                    addressLine2 = addressLine2.replaceFirst(" ", "");
+                                    textView_location.setText(addressLine1 + "\n" + addressLine2);
+                                    textView_location.setVisibility(View.VISIBLE);
+                                    button_selectLocation.setVisibility(View.GONE);
                                 }
                             }
                         });
