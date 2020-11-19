@@ -15,6 +15,8 @@ public class ProfileActivity extends AppCompatActivity {
 
     TabLayout tabLayout;
     ViewPager2 viewPager;
+    TextView textView_fullName;
+    TextView textView_displayName;
     FirebaseUser currentUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +25,9 @@ public class ProfileActivity extends AppCompatActivity {
 
         viewPager = findViewById(R.id.view_pager);
         tabLayout = findViewById(R.id.tabs);
-
+        textView_fullName = findViewById(R.id.textView_pa_fullName);
+        textView_displayName = findViewById(R.id.textView_pa_displayName);
+        fillProfile();
         viewPager.setAdapter(createCardAdapter());
         new TabLayoutMediator(tabLayout, viewPager,
                 new TabLayoutMediator.TabConfigurationStrategy() {
@@ -46,5 +50,10 @@ public class ProfileActivity extends AppCompatActivity {
     private ViewPagerAdapter createCardAdapter() {
         ViewPagerAdapter adapter = new ViewPagerAdapter(this);
         return adapter;
+    }
+
+    private void fillProfile(){
+        textView_fullName.setText(CurrentUser.getCurrentUser().getFirstName() + " " + CurrentUser.getCurrentUser().getLastName());
+        textView_displayName.setText(CurrentUser.getCurrentUser().getDisplayName());
     }
 }

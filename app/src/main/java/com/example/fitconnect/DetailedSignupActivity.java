@@ -53,7 +53,7 @@ public class DetailedSignupActivity extends AppCompatActivity {
         button_finish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CurrentUser.getCurrentUser().setPreferredActivities(userInterests);
+                CurrentUser.getCurrentUser().setPreferredActivities(userInterests.toString());
                 CurrentUser.getCurrentUser().setAboutMe(editText_aboutMe.getText().toString());
                 DatabaseReference databaseUsers = FirebaseDatabase.getInstance().getReference("users");
                 databaseUsers.child(CurrentUser.getCurrentUser().getKey()).setValue(CurrentUser.getCurrentUser());

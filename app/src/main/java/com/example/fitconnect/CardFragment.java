@@ -54,5 +54,12 @@ public class CardFragment extends Fragment {
     }
     @Override public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        TextView textView_location = view.findViewById(R.id.textView_p_location);
+        TextView textView_aboutMe = view.findViewById(R.id.textView_p_aboutMe);
+        TextView textView_interests = view.findViewById(R.id.textView_p_interests);
+        textView_aboutMe.setText(CurrentUser.getCurrentUser().getAboutMe());
+        textView_interests.setText(CurrentUser.getCurrentUser().getPreferredActivities().toString());
+        textView_location.setText(CurrentUser.getCurrentUser().getLocation());
+
     }
 }

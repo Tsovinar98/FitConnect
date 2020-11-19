@@ -31,6 +31,7 @@ import com.google.firebase.database.ValueEventListener;
 import org.w3c.dom.ls.LSOutput;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -109,7 +110,7 @@ public class LoginActivity extends AppCompatActivity {
                                     HashMap ob = (HashMap) dataSnapshot.getValue();
                                     System.out.println(ob.toString());
                                     UserInformation userInformation = new UserInformation(ob.get("UserID").toString(), ob.get("key").toString(), ob.get("displayName").toString(), ob.get("firstName").toString(),
-                                            ob.get("lastName").toString(), ob.get("email").toString(), ob.get("location").toString());
+                                            ob.get("lastName").toString(), ob.get("email").toString(), ob.get("location").toString(), ob.get("preferredActivities").toString(), ob.get("aboutMe").toString());
                                     CurrentUser.setCurrentUser(userInformation);
                                 }
                                 @Override

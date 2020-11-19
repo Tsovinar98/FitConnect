@@ -13,11 +13,11 @@ public class UserInformation {
     private String aboutMe;
     private String photoUrl;
     private String location;
-    private ArrayList<String> preferredActivities;
+    private String preferredActivities;
     private ArrayList<UserInformation> blockedUsers;
     private String key;
 
-    public UserInformation(String userID, String key, String displayName, String firstName, String lastName, String email, String location) {
+    public UserInformation(String userID, String key, String displayName, String firstName, String lastName, String email, String location, String preferredActivities, String aboutMe) {
         this.userID = userID;
         this.key=key;
         this.displayName = displayName;
@@ -25,16 +25,24 @@ public class UserInformation {
         this.lastName = lastName;
         this.email = email;
         this.location = location;
-        this.preferredActivities = new ArrayList<>();
-        this.aboutMe = "";
-
+        this.preferredActivities = preferredActivities;
+        this.aboutMe = aboutMe;
     }
-
-
-
     public UserInformation(String email) {
         this.email = email;
-        this.preferredActivities = new ArrayList<>();
+        this.preferredActivities = "";
+        this.aboutMe = "";
+    }
+
+    public UserInformation(String uid, String key, String displayName, String firstName, String lastName, String email, String address) {
+        this.userID = uid;
+        this.key = key;
+        this.displayName = displayName;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.location = address;
+        this.preferredActivities = "";
         this.aboutMe = "";
     }
 
@@ -70,11 +78,11 @@ public class UserInformation {
         this.aboutMe = aboutMe;
     }
 
-    public ArrayList<String> getPreferredActivities() {
+    public String getPreferredActivities() {
         return preferredActivities;
     }
 
-    public void setPreferredActivities(ArrayList<String> preferredActivities) {
+    public void setPreferredActivities(String preferredActivities) {
         this.preferredActivities = preferredActivities;
     }
 
