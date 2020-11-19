@@ -173,7 +173,7 @@ public class SignupActivity extends AppCompatActivity {
                             String id = databaseUsers.push().getKey();
                             UserInformation userInformation = new UserInformation(user.getUid(), editText_username.getText().toString(), name, editText_lastName.getText().toString(), email, address);
                             databaseUsers.child(id).setValue(userInformation);
-                            Intent intent = new Intent(SignupActivity.this, ProfileActivity.class);
+                            Intent intent = new Intent(SignupActivity.this, DetailedSignupActivity.class);
                             intent.putExtra("currentUser", user);
                             startActivity(intent);
                             //updateUI(user);

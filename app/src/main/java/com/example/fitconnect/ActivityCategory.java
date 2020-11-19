@@ -39,4 +39,8 @@ public enum ActivityCategory {
         this.label=label;
     }
 
+    public String getLabel(){
+        return this.label;
+    }
+
 }

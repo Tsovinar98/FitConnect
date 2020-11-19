@@ -14,8 +14,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="289dp"
-            android:background="#77F3E9
-"
+            android:background="#77F3E9"
             android:orientation="vertical">
 
             <TextView
