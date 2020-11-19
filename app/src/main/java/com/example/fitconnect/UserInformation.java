@@ -12,10 +12,10 @@ public class UserInformation {
     private String email;
     private String aboutMe;
     private String photoUrl;
-    private Location location;
+    private String location;
     private ArrayList<ActivityCategory> preferredActivities;
 
-    public UserInformation(String displayName, String firstName, String lastName, String email, Location location) {
+    public UserInformation(String displayName, String firstName, String lastName, String email, String location) {
         this.displayName = displayName;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -79,11 +79,11 @@ public class UserInformation {
         this.lastName = lastName;
     }
 
-    public Location getLocation() {
+    public String getLocation() {
         return location;
     }
 
-    public void setLocation(Location location) {
+    public void setLocation(String location) {
         this.location = location;
     }
 }

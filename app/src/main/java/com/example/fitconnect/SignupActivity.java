@@ -43,6 +43,8 @@ public class SignupActivity extends AppCompatActivity {
     Button button_selectLocation;
     ProgressBar progressBar_loadingSpinner;
     Double latitude, longitude;
+    String address;
+
     private FusedLocationProviderClient fusedLocationProviderClient;
     private static final String TAG = "";
     @Override
@@ -76,7 +78,7 @@ public class SignupActivity extends AppCompatActivity {
                                 if (location!= null){
                                     latitude = location.getLatitude();
                                     longitude= location.getLongitude();
-                                    String address = getCompleteAddressString(latitude, longitude);
+                                    address = getCompleteAddressString(latitude, longitude);
                                     textView_location.setText(address);
                                 }
                             }
@@ -136,7 +138,7 @@ public class SignupActivity extends AppCompatActivity {
                                     .setDisplayName(name).build();
                             user.updateProfile(profileUpdates);
                             String id = databaseUsers.push().getKey();
-                            UserInformation userInformation = new UserInformation("Ryansucks", "Ryan", "Anderson", "ryan@gmail.com", null);
+                            UserInformation userInformation = new UserInformation(editText_username.getText().toString(), name, editText_lastName.getText().toString(), email, address);
                             databaseUsers.child(id).setValue(userInformation);
                             Intent intent = new Intent(SignupActivity.this, ProfileActivity.class);
                             intent.putExtra("currentUser", user);
