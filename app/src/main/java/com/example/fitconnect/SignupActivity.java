@@ -171,7 +171,7 @@ public class SignupActivity extends AppCompatActivity {
                                     .setDisplayName(name).build();
                             user.updateProfile(profileUpdates);
                             String id = databaseUsers.push().getKey();
-                            UserInformation userInformation = new UserInformation(editText_username.getText().toString(), name, editText_lastName.getText().toString(), email, address);
+                            UserInformation userInformation = new UserInformation(user.getUid(), editText_username.getText().toString(), name, editText_lastName.getText().toString(), email, address);
                             databaseUsers.child(id).setValue(userInformation);
                             Intent intent = new Intent(SignupActivity.this, ProfileActivity.class);
                             intent.putExtra("currentUser", user);

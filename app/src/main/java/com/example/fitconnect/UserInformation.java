@@ -5,7 +5,7 @@ import android.location.Location;
 import java.util.ArrayList;
 
 public class UserInformation {
-
+    private String userID;
     private String displayName;
     private String firstName;
     private String lastName;
@@ -15,7 +15,8 @@ public class UserInformation {
     private String location;
     private ArrayList<ActivityCategory> preferredActivities;
 
-    public UserInformation(String displayName, String firstName, String lastName, String email, String location) {
+    public UserInformation(String userID, String displayName, String firstName, String lastName, String email, String location) {
+        this.userID = userID;
         this.displayName = displayName;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -29,6 +30,10 @@ public class UserInformation {
         this.email = email;
         this.preferredActivities = new ArrayList<>();
         this.aboutMe = "";
+    }
+
+    public String getUserID() {
+        return userID;
     }
 
     public String getPhotoUrl() {
