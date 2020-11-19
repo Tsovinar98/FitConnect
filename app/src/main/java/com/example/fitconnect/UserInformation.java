@@ -14,6 +14,7 @@ public class UserInformation {
     private String photoUrl;
     private String location;
     private ArrayList<ActivityCategory> preferredActivities;
+    private ArrayList<UserInformation> blockedUsers;
 
     public UserInformation(String userID, String displayName, String firstName, String lastName, String email, String location) {
         this.userID = userID;
