@@ -8,50 +8,100 @@
     android:orientation="vertical"
     tools:context=".LoginActivity">
 
-    <EditText
-        android:id="@+id/editText_password"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textPersonName" />
+        android:background="#77F3E9"
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/editText_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Email"
-        android:inputType="textPersonName" />
+        <ImageView
+            android:id="@+id/imageView_li_fitconnectLogo"
+            android:layout_width="203dp"
+            android:layout_height="254dp"
+            android:layout_gravity="center_horizontal"
+            android:background="#77F3E9"
+            app:srcCompat="@drawable/fitconnectlogo" />
 
-    <ProgressBar
-        android:id="@+id/progressBar_loadingSpinner"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/imageView_fi_fitconnectIcon"
+            android:layout_width="377dp"
+            android:layout_height="85dp"
+            android:layout_gravity="center_horizontal"
+            android:background="#77F3e9"
+            app:srcCompat="@drawable/icon" />
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView_forgotPassword"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/forgot_password"
-        android:textColor="#FFFFFF"
-        tools:text="@string/forgot_password" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/button_login"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Login" />
+        <EditText
+            android:id="@+id/editText_email"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/input_background"
+            android:ems="10"
+            android:hint="Email"
+            android:inputType="textPersonName"
+            android:paddingHorizontal="5dp"
+            android:textColorHint="#595959" />
 
-    <TextView
-        android:id="@+id/textView_signup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="@string/signup"
-        android:textColor="#FFFFFF"
-        tools:text="@string/signup" />
+        <EditText
+            android:id="@+id/editText_password"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/input_background"
+            android:ems="10"
+            android:hint="Password"
+            android:inputType="textPersonName"
+            android:paddingHorizontal="5dp"
+            android:textColorHint="#595959" />
+
+        <ProgressBar
+            android:id="@+id/progressBar_loadingSpinner"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/textView_forgotPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/forgot_password"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            tools:text="@string/forgot_password" />
+
+        <Button
+            android:id="@+id/button_login"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/button_background"
+            android:minWidth="1dip"
+            android:minHeight="1dip"
+            android:radius="15dp"
+            android:text="Login"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/textView_signup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_weight="1"
+            android:text="@string/signup"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            tools:text="@string/signup" />
+    </LinearLayout>
 
 </LinearLayout>

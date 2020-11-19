@@ -33,7 +33,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Last Name"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textColor="#FFFFFF" />
 
         <EditText
             android:id="@+id/editText_su_email"

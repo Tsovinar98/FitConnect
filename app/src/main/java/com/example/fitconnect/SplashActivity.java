@@ -23,7 +23,7 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        imageView_fitconnectLogo = findViewById(R.id.imageView_fitconnectLogo);
+        imageView_fitconnectLogo = findViewById(R.id.imageView_sp_fitconnectLogo);
 
         ScaleAnimation scaleUp =  new ScaleAnimation(0f, .75f, 0f, .75f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
         scaleUp.setInterpolator(new AccelerateInterpolator()); //and this
