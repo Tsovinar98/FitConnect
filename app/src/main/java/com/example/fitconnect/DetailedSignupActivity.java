@@ -69,6 +69,7 @@ public class DetailedSignupActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String activity = (String) adapterView.getItemAtPosition(i);
                 adapter.remove(activity);
+                stringSearchList.remove(activity);
                 adapter.notifyDataSetChanged();
                 userInterests.add(activity);
                 updateInterests();
