@@ -39,6 +39,7 @@ public class DetailedSignupActivity extends AppCompatActivity {
         userInterests = new ArrayList<>();
         searchList = new ArrayList<ActivityCategory>(EnumSet.allOf(ActivityCategory.class));
         stringSearchList = new ArrayList<>();
+
         for(ActivityCategory i : searchList){
             stringSearchList.add(i.getLabel().toLowerCase());
         }
@@ -50,7 +51,6 @@ public class DetailedSignupActivity extends AppCompatActivity {
                 query = query.toLowerCase();
                 if(stringSearchList.contains(query)){
                     adapter.getFilter().filter(query);
-                    System.out.println("wtfffff");
                 }else{
                     Toast.makeText(DetailedSignupActivity.this, "No Match found",Toast.LENGTH_LONG).show();
                 }
