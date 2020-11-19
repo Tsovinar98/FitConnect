@@ -9,6 +9,68 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"/>
+        android:orientation="vertical"
+        android:background="#77F3E9">
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:textAlignment="center"
+            android:text="You're almost done! Let others know a little bit about you by adding a profile picture and a short description of yourself." />
+
+        <ImageButton
+            android:id="@+id/imageButton_selectProfilePic"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/profilepic"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/editicon" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="15dp"
+            android:paddingHorizontal="5dp"
+            android:text="About Me" />
+
+        <EditText
+            android:id="@+id/editText_ds_aboutMe"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="15dp"
+            android:textAlignment="gravity"
+            android:gravity="top"
+            android:background="@drawable/input_background"
+            android:ems="10"
+            android:hint="Tell us about yourself!"
+            android:inputType="textPersonName"
+            android:paddingHorizontal="5dp"
+            android:textColor="#000000"
+            android:textColorHint="#595959" />
+
+        <SearchView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+        </SearchView>
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/button_ds_finish"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_background"
+            android:text="Button" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
