@@ -13,11 +13,13 @@ public class UserInformation {
     private String aboutMe;
     private String photoUrl;
     private String location;
-    private ArrayList<ActivityCategory> preferredActivities;
+    private ArrayList<String> preferredActivities;
     private ArrayList<UserInformation> blockedUsers;
+    private String key;
 
-    public UserInformation(String userID, String displayName, String firstName, String lastName, String email, String location) {
+    public UserInformation(String userID, String key, String displayName, String firstName, String lastName, String email, String location) {
         this.userID = userID;
+        this.key=key;
         this.displayName = displayName;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -25,7 +27,10 @@ public class UserInformation {
         this.location = location;
         this.preferredActivities = new ArrayList<>();
         this.aboutMe = "";
+
     }
+
+
 
     public UserInformation(String email) {
         this.email = email;
@@ -35,6 +40,14 @@ public class UserInformation {
 
     public String getUserID() {
         return userID;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public String getPhotoUrl() {
@@ -57,8 +70,12 @@ public class UserInformation {
         this.aboutMe = aboutMe;
     }
 
-    public ArrayList<ActivityCategory> getPreferredActivities() {
+    public ArrayList<String> getPreferredActivities() {
         return preferredActivities;
+    }
+
+    public void setPreferredActivities(ArrayList<String> preferredActivities) {
+        this.preferredActivities = preferredActivities;
     }
 
     public String getDisplayName() {

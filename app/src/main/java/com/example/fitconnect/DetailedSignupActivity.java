@@ -9,10 +9,17 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,6 +35,8 @@ public class DetailedSignupActivity extends AppCompatActivity {
     ArrayList<String> stringSearchList;
     ArrayList<String> userInterests;
     TextView textView_userInterests;
+    Button button_finish;
+    EditText editText_aboutMe;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,10 +45,22 @@ public class DetailedSignupActivity extends AppCompatActivity {
         searchView_ds_search = findViewById(R.id.searchView_ds_search);
         listView_searchList = findViewById(R.id.listView_searchList);
         textView_userInterests = findViewById(R.id.textView_ds_interests);
+        button_finish = findViewById(R.id.button_ds_finish);
+        editText_aboutMe = findViewById(R.id.editText_ds_aboutMe);
         userInterests = new ArrayList<>();
         searchList = new ArrayList<ActivityCategory>(EnumSet.allOf(ActivityCategory.class));
         stringSearchList = new ArrayList<>();
-
+        button_finish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CurrentUser.getCurrentUser().setPreferredActivities(userInterests);
+                CurrentUser.getCurrentUser().setAboutMe(editText_aboutMe.getText().toString());
+                DatabaseReference databaseUsers = FirebaseDatabase.getInstance().getReference("users");
+                databaseUsers.child(CurrentUser.getCurrentUser().getKey()).setValue(CurrentUser.getCurrentUser());
+                Intent intent = new Intent(DetailedSignupActivity.this, ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
         for(ActivityCategory i : searchList){
             stringSearchList.add(i.getLabel().toLowerCase());
         }

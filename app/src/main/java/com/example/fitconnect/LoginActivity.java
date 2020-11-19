@@ -108,7 +108,7 @@ public class LoginActivity extends AppCompatActivity {
                                 public void onChildAdded(DataSnapshot dataSnapshot,  String s) {
                                     HashMap ob = (HashMap) dataSnapshot.getValue();
                                     System.out.println(ob.toString());
-                                    UserInformation userInformation = new UserInformation(ob.get("UserID").toString(), ob.get("displayName").toString(), ob.get("firstName").toString(),
+                                    UserInformation userInformation = new UserInformation(ob.get("UserID").toString(), ob.get("key").toString(), ob.get("displayName").toString(), ob.get("firstName").toString(),
                                             ob.get("lastName").toString(), ob.get("email").toString(), ob.get("location").toString());
                                     CurrentUser.setCurrentUser(userInformation);
                                 }
