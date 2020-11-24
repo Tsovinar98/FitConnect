@@ -15,24 +15,6 @@ public class UserInformation {
     private String location;
     private String preferredActivities;
     private ArrayList<UserInformation> blockedUsers;
-    private String key;
-
-    public UserInformation(String userID, String key, String displayName, String firstName, String lastName, String email, String location, String preferredActivities, String aboutMe) {
-        this.userID = userID;
-        this.key=key;
-        this.displayName = displayName;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.location = location;
-        this.preferredActivities = preferredActivities;
-        this.aboutMe = aboutMe;
-    }
-    public UserInformation(String email) {
-        this.email = email;
-        this.preferredActivities = "";
-        this.aboutMe = "";
-    }
 
     //constructor for logging in
     public UserInformation(String userID, String displayName, String firstName, String lastName, String email, String aboutMe, String location, String preferredActivities) {
@@ -46,6 +28,7 @@ public class UserInformation {
         this.preferredActivities = preferredActivities;
     }
 
+    //Constructor used for signing up
     public UserInformation(String userID, String displayName, String firstName, String lastName, String email, String address) {
         this.userID = userID;
         this.displayName = displayName;
@@ -57,28 +40,9 @@ public class UserInformation {
         this.aboutMe = "";
     }
 
-    public UserInformation(String uid, String key, String displayName, String firstName, String lastName, String email, String address) {
-        this.userID = uid;
-        this.key = key;
-        this.displayName = displayName;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.location = address;
-        this.preferredActivities = "";
-        this.aboutMe = "";
-    }
 
     public String getUserID() {
         return userID;
-    }
-
-    public String getKey() {
-        return key;
-    }
-
-    public void setKey(String key) {
-        this.key = key;
     }
 
     public String getPhotoUrl() {
