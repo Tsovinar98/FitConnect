@@ -103,29 +103,29 @@ public class LoginActivity extends AppCompatActivity {
                             Log.d(TAG, "signInWithEmail:success");
                             final FirebaseUser user = auth.getCurrentUser();
                             DatabaseReference dRef = FirebaseDatabase.getInstance().getReference().child("users");
-                            Query mQuery = dRef.orderByChild("email").equalTo(email);
-                            mQuery.addChildEventListener(new ChildEventListener() {
-                                @Override
-                                public void onChildAdded(DataSnapshot dataSnapshot,  String s) {
-                                    HashMap ob = (HashMap) dataSnapshot.getValue();
-                                    System.out.println(ob.toString());
-                                    UserInformation userInformation = new UserInformation(ob.get("UserID").toString(), ob.get("key").toString(), ob.get("displayName").toString(), ob.get("firstName").toString(),
-                                            ob.get("lastName").toString(), ob.get("email").toString(), ob.get("location").toString(), ob.get("preferredActivities").toString(), ob.get("aboutMe").toString());
-                                    CurrentUser.setCurrentUser(userInformation);
-                                }
-                                @Override
-                                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                                }
-                                @Override
-                                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-                                }
-                                @Override
-                                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                                }
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError databaseError) {
-                                }
-                            });
+                            //Query mQuery = dRef.orderByChild(user.getKey()).equalTo(email);
+//                            mQuery.addChildEventListener(new ChildEventListener() {
+//                                @Override
+//                                public void onChildAdded(DataSnapshot dataSnapshot,  String s) {
+//                                    HashMap ob = (HashMap) dataSnapshot.getValue();
+//                                    System.out.println(ob.toString());
+//                                    UserInformation userInformation = new UserInformation(ob.get("UserID").toString(), ob.get("key").toString(), ob.get("displayName").toString(), ob.get("firstName").toString(),
+//                                            ob.get("lastName").toString(), ob.get("email").toString(), ob.get("location").toString(), ob.get("preferredActivities").toString(), ob.get("aboutMe").toString());
+//                                    CurrentUser.setCurrentUser(userInformation);
+//                                }
+//                                @Override
+//                                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+//                                }
+//                                @Override
+//                                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+//                                }
+//                                @Override
+//                                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+//                                }
+//                                @Override
+//                                public void onCancelled(@NonNull DatabaseError databaseError) {
+//                                }
+//                            });
                             //System.out.println(obj.toString());
                             Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
                             intent.putExtra("currentUser", user);

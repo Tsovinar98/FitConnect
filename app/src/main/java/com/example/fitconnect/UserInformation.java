@@ -34,6 +34,17 @@ public class UserInformation {
         this.aboutMe = "";
     }
 
+    public UserInformation(String userID, String displayName, String firstName, String lastName, String email, String address) {
+        this.userID = userID;
+        this.displayName = displayName;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.location = address;
+        this.preferredActivities = "";
+        this.aboutMe = "";
+    }
+
     public UserInformation(String uid, String key, String displayName, String firstName, String lastName, String email, String address) {
         this.userID = uid;
         this.key = key;

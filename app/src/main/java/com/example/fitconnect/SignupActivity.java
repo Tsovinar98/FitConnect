@@ -159,6 +159,9 @@ public class SignupActivity extends AppCompatActivity {
         final String email = editText_email.getText().toString();
         String password = editText_password.getText().toString();
         final String name = editText_firstName.getText().toString();
+        final String username = editText_username.getText().toString();
+        final String lastName = editText_lastName.getText().toString();
+        final String address = textView_location.getText().toString();
         LoginActivity.auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -167,16 +170,14 @@ public class SignupActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = LoginActivity.auth.getCurrentUser();
-                            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                                    .setDisplayName(name).build();
-                            user.updateProfile(profileUpdates);
-                            String key = databaseUsers.push().getKey();
-                            UserInformation userInformation = new UserInformation(user.getUid(), key, editText_username.getText().toString(), name, editText_lastName.getText().toString(), email, address);
-                            CurrentUser.setCurrentUser(userInformation);
-                            //databaseUsers.child(key).setValue(userInformation);
+                            FirebaseDatabase database = FirebaseDatabase.getInstance();
+                            String userid = user.getUid();
+                            DatabaseReference ref = database.getReference("users").child(userid);
+                            UserInformation userInfo = new UserInformation(userid, username, name, lastName, email, address );
+                            CurrentUser.setCurrentUser(userInfo);
+                            ref.setValue(userInfo);
                             Intent intent = new Intent(SignupActivity.this, DetailedSignupActivity.class);
                             startActivity(intent);
-                            //updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());

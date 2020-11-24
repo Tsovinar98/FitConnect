@@ -55,8 +55,9 @@ public class DetailedSignupActivity extends AppCompatActivity {
             public void onClick(View view) {
                 CurrentUser.getCurrentUser().setPreferredActivities(userInterests.toString());
                 CurrentUser.getCurrentUser().setAboutMe(editText_aboutMe.getText().toString());
-                DatabaseReference databaseUsers = FirebaseDatabase.getInstance().getReference("users");
-                databaseUsers.child(CurrentUser.getCurrentUser().getKey()).setValue(CurrentUser.getCurrentUser());
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference ref = database.getReference("users").child(CurrentUser.getCurrentUser().getUserID());
+                ref.setValue(CurrentUser.getCurrentUser());
                 Intent intent = new Intent(DetailedSignupActivity.this, ProfileActivity.class);
                 startActivity(intent);
             }
