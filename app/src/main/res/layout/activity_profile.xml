@@ -17,7 +17,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#77F3E9"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="5dp">
 
             <ImageButton
                 android:id="@+id/imageButton"
@@ -41,9 +42,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView"
-                android:textStyle="bold"
                 android:textAlignment="center"
-                android:textColor="#000000" />
+                android:textColor="#000000"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textView_pa_displayName"
