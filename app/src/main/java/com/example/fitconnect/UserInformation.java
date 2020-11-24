@@ -34,6 +34,18 @@ public class UserInformation {
         this.aboutMe = "";
     }
 
+    //constructor for logging in
+    public UserInformation(String userID, String displayName, String firstName, String lastName, String email, String aboutMe, String location, String preferredActivities) {
+        this.userID = userID;
+        this.displayName = displayName;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.aboutMe = aboutMe;
+        this.location = location;
+        this.preferredActivities = preferredActivities;
+    }
+
     public UserInformation(String userID, String displayName, String firstName, String lastName, String email, String address) {
         this.userID = userID;
         this.displayName = displayName;
