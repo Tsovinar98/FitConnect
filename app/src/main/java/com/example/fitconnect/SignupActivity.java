@@ -49,7 +49,7 @@ public class SignupActivity extends AppCompatActivity {
     Button button_selectLocation;
     ProgressBar progressBar_loadingSpinner;
     Double latitude, longitude;
-    String address;
+    static String address;
 
     private FusedLocationProviderClient fusedLocationProviderClient;
     private static final String TAG = "";
@@ -161,7 +161,6 @@ public class SignupActivity extends AppCompatActivity {
         final String name = editText_firstName.getText().toString();
         final String username = editText_username.getText().toString();
         final String lastName = editText_lastName.getText().toString();
-        final String address = textView_location.getText().toString();
         LoginActivity.auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override

@@ -13,6 +13,8 @@ public class UserInformation {
     private String aboutMe;
     private String photoUrl;
     private String location;
+    private String streetAddress = "";
+    private String cityState = "";
     private String preferredActivities;
     private ArrayList<UserInformation> blockedUsers;
 
@@ -26,6 +28,7 @@ public class UserInformation {
         this.aboutMe = aboutMe;
         this.location = location;
         this.preferredActivities = preferredActivities;
+        formatAddress();
     }
 
     //Constructor used for signing up
@@ -38,8 +41,42 @@ public class UserInformation {
         this.location = address;
         this.preferredActivities = "";
         this.aboutMe = "";
+        formatAddress();
     }
 
+    private void formatAddress(){
+        int numCommas = 0;
+        for(int i =0; i < location.length(); i++){
+            if(location.charAt(i) == ','){
+                numCommas++;
+            }
+            if(numCommas == 0){
+                streetAddress+=location.charAt(i);
+            }else if(numCommas >= 1){
+                cityState+=location.charAt(i);
+            }
+        }
+        cityState = cityState.replaceFirst(" ",  "");
+        cityState = cityState.replaceFirst(",", "");
+        System.out.println("Street Address: " + streetAddress);
+        System.out.println("CityState: " + cityState);
+    }
+
+    public String getStreetAddress() {
+        return streetAddress;
+    }
+
+    public void setStreetAddress(String streetAddress) {
+        this.streetAddress = streetAddress;
+    }
+
+    public String getCityState() {
+        return cityState;
+    }
+
+    public void setCityState(String cityState) {
+        this.cityState = cityState;
+    }
 
     public String getUserID() {
         return userID;
@@ -71,6 +108,8 @@ public class UserInformation {
 
     public void setPreferredActivities(String preferredActivities) {
         this.preferredActivities = preferredActivities;
+        this.preferredActivities = this.preferredActivities.replace("[", "");
+        this.preferredActivities = this.preferredActivities.replace("]", "");
     }
 
     public String getDisplayName() {

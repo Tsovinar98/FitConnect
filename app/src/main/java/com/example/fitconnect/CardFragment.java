@@ -61,7 +61,7 @@ public class CardFragment extends Fragment {
             TextView textView_interests = view.findViewById(R.id.textView_p_interests);
             textView_aboutMe.setText(CurrentUser.getCurrentUser().getAboutMe());
             textView_interests.setText(CurrentUser.getCurrentUser().getPreferredActivities().toString());
-            textView_location.setText(CurrentUser.getCurrentUser().getLocation());
+            textView_location.setText(CurrentUser.getCurrentUser().getCityState());
         }
 
     }
