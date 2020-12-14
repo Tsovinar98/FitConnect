@@ -4,8 +4,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#77F3E9"
     android:orientation="vertical"
+    android:paddingTop="5dp"
     tools:context=".CreateEventActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="#77F3E9"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#77F3E9"
+            app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+
+        <ImageButton
+            android:id="@+id/imageButton4"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:adjustViewBounds="false"
+            android:background="#77F3E9"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/profilepic" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#77F3E9"
+        android:text="Fill out below to create your own post!"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="18sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,16 +81,16 @@
                 android:id="@+id/editTextDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginTop="5dp"
+                android:layout_weight="1"
                 android:background="@drawable/input_background"
+                android:ems="10"
                 android:hint="Date"
+                android:inputType="date"
                 android:paddingHorizontal="5dp"
                 android:textColor="#000000"
-                android:textColorHint="#595959"
-                android:inputType="date" />
+                android:textColorHint="#595959" />
 
         </LinearLayout>
 
@@ -74,16 +111,16 @@
                 android:id="@+id/editTextTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginTop="5dp"
+                android:layout_weight="1"
                 android:background="@drawable/input_background"
+                android:ems="10"
                 android:hint="Time"
+                android:inputType="time"
                 android:paddingHorizontal="5dp"
                 android:textColor="#000000"
-                android:textColorHint="#595959"
-                android:inputType="time" />
+                android:textColorHint="#595959" />
 
         </LinearLayout>
 
@@ -104,16 +141,16 @@
                 android:id="@+id/editTextTextPostalAddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginTop="5dp"
+                android:layout_weight="1"
                 android:background="@drawable/input_background"
+                android:ems="10"
                 android:hint="Location of Event"
+                android:inputType="textPostalAddress"
                 android:paddingHorizontal="5dp"
                 android:textColor="#000000"
-                android:textColorHint="#595959"
-                android:inputType="textPostalAddress" />
+                android:textColorHint="#595959" />
 
         </LinearLayout>
 
@@ -134,16 +171,16 @@
                 android:id="@+id/editTextNumAttendees"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginTop="5dp"
+                android:layout_weight="1"
                 android:background="@drawable/input_background"
+                android:ems="10"
                 android:hint="Max Number of Attendees"
+                android:inputType="textPostalAddress"
                 android:paddingHorizontal="5dp"
                 android:textColor="#000000"
-                android:textColorHint="#595959"
-                android:inputType="textPostalAddress" />
+                android:textColorHint="#595959" />
 
         </LinearLayout>
 
@@ -173,27 +210,27 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000"
+        android:gravity="bottom"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <Button
+            android:id="@+id/button"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="bottom"
-            android:background="#000000"
-            android:orientation="vertical">
-
-            <Button
-                android:id="@+id/button"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_gravity="bottom"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginBottom="15dp"
-                android:background="@drawable/button_background"
-                android:minWidth="1dip"
-                android:minHeight="1dip"
-                android:radius="15dp"
-                android:text="create event"
-                android:textColor="#000000" />
-        </LinearLayout>
-
+            android:layout_height="45dp"
+            android:layout_gravity="bottom"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/button_background"
+            android:minWidth="1dip"
+            android:minHeight="1dip"
+            android:radius="15dp"
+            android:text="create event"
+            android:textColor="#000000" />
     </LinearLayout>
+
+
+</LinearLayout>
