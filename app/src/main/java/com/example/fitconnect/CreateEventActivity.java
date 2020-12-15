@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.gms.common.util.JsonUtils;
@@ -35,6 +36,8 @@ public class CreateEventActivity extends AppCompatActivity {
     EditText editTextMaxAttendees;
     EditText editTextDescription;
     Button buttonCreateEvent;
+    ImageButton imageButton_cancel;
+    ImageButton imageButton_profile;
     String eventID;
 
     @Override
@@ -49,11 +52,37 @@ public class CreateEventActivity extends AppCompatActivity {
         editTextMaxAttendees = findViewById(R.id.editText_ce_maxAttendees);
         editTextDescription = findViewById(R.id.editText_ce_description);
         buttonCreateEvent = findViewById(R.id.button_ce_createEvent);
+        imageButton_cancel = findViewById(R.id.imageButton_ce_cancel);
+        imageButton_profile = findViewById(R.id.imageButton_ce_profile);
         buttonCreateEvent.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 createEvent();
             }
         });
+
+        imageButton_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToProfile();
+            }
+        });
+
+        imageButton_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToAllEvents();
+            }
+        });
+    }
+
+    public void goToProfile(){
+        Intent intent = new Intent(this, ProfileActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToAllEvents(){
+        Intent intent = new Intent(this, ViewAllEventsActivity.class);
+        startActivity(intent);
     }
 
     private void createEvent(){

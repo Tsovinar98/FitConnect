@@ -30,7 +30,7 @@
             android:layout_weight="10" />
 
         <ImageButton
-            android:id="@+id/imageButton4"
+            android:id="@+id/imageButton_ce_profile"
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:layout_weight="1"

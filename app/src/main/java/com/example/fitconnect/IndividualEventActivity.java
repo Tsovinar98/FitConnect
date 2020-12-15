@@ -2,7 +2,9 @@ package com.example.fitconnect;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -47,6 +49,30 @@ public class IndividualEventActivity extends AppCompatActivity {
         textView_location = findViewById(R.id.textView_ie_location);
         textView_description = findViewById(R.id.textView_ie_description);
         readIndividualEvent();
+
+        imageButton_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToProfile();
+            }
+        });
+
+        imageButton_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToAllEvents();
+            }
+        });
+    }
+
+    public void goToProfile(){
+        Intent intent = new Intent(this, ProfileActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToAllEvents(){
+        Intent intent = new Intent(this, ViewAllEventsActivity.class);
+        startActivity(intent);
     }
 
     public void readIndividualEvent(){
