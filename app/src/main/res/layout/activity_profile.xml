@@ -21,7 +21,7 @@
             android:paddingBottom="5dp">
 
             <ImageButton
-                android:id="@+id/imageButton"
+                android:id="@+id/imageButton_settingsIcon"
                 android:layout_width="51dp"
                 android:layout_height="39dp"
                 android:layout_gravity="right"

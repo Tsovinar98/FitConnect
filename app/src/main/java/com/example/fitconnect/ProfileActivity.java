@@ -4,7 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
@@ -17,6 +21,7 @@ public class ProfileActivity extends AppCompatActivity {
     ViewPager2 viewPager;
     TextView textView_fullName;
     TextView textView_displayName;
+    ImageButton imageButton_settingsIcon;
     FirebaseUser currentUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +32,15 @@ public class ProfileActivity extends AppCompatActivity {
         tabLayout = findViewById(R.id.tabs);
         textView_fullName = findViewById(R.id.textView_pa_fullName);
         textView_displayName = findViewById(R.id.textView_pa_displayName);
+        imageButton_settingsIcon = findViewById(R.id.imageButton_settingsIcon);
+
+        imageButton_settingsIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                createEvent();
+            }
+        });
+
         fillProfile();
         viewPager.setAdapter(createCardAdapter());
         new TabLayoutMediator(tabLayout, viewPager,
@@ -55,5 +69,10 @@ public class ProfileActivity extends AppCompatActivity {
     private void fillProfile(){
         textView_fullName.setText(CurrentUser.getCurrentUser().getFirstName() + " " + CurrentUser.getCurrentUser().getLastName());
         textView_displayName.setText(CurrentUser.getCurrentUser().getDisplayName());
+    }
+
+    public void createEvent(){
+        Intent intent = new Intent(this, CreateEventActivity.class);
+        startActivity(intent);
     }
 }
