@@ -119,6 +119,8 @@ public class CreateEventActivity extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference eref = database.getReference("numEvents");
         eref.setValue(Integer.parseInt(eventID)+1);
+
+        postConfirmation();
     }
 
     public void postConfirmation(){
