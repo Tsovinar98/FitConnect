@@ -80,7 +80,7 @@ public class CreateEventActivity extends AppCompatActivity {
                 System.out.println("numEvents is " + userObj);
                 eventID = userObj.toString();
                 System.out.println("in here eventID is " + eventID);
-                writeEvent(title, date, time, location, numAttendees, description);
+                writeEventToUser(title, date, time, location, numAttendees, description);
             }
 
 
@@ -91,13 +91,25 @@ public class CreateEventActivity extends AppCompatActivity {
         });
     }
 
-    public void writeEvent(String title, String date, String time, String location, String maxAttendees, String description){
+    public void writeEventToUser(String title, String date, String time, String location, String maxAttendees, String description){
         FirebaseUser user = LoginActivity.auth.getCurrentUser();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         String userid = user.getUid();
         System.out.println("value of event id is"+ eventID);
         DatabaseReference eref = database.getReference("users").child(userid).child("events").child(eventID);
         Event event = new Event(title, date, time, location, maxAttendees, description, eventID);
+        System.out.println("the event is " + event.toString());
+        eref.setValue(event);
+
+        writeEventToDatabase(event);
+    }
+
+    public void writeEventToDatabase(Event event){
+        FirebaseUser user = LoginActivity.auth.getCurrentUser();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        String userid = user.getUid();
+        System.out.println("value of event id is"+ eventID);
+        DatabaseReference eref = database.getReference("events").child(eventID);
         eref.setValue(event);
 
         updateEventNum();
