@@ -97,7 +97,7 @@ public class CreateEventActivity extends AppCompatActivity {
         String userid = user.getUid();
         System.out.println("value of event id is"+ eventID);
         DatabaseReference eref = database.getReference("users").child(userid).child("events").child(eventID);
-        Event event = new Event(title, date, time, location, maxAttendees, description, eventID);
+        Event event = new Event(title, date, time, location, maxAttendees, description, eventID, CurrentUser.getCurrentUser().getDisplayName());
         System.out.println("the event is " + event.toString());
         eref.setValue(event);
 
@@ -119,5 +119,11 @@ public class CreateEventActivity extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference eref = database.getReference("numEvents");
         eref.setValue(Integer.parseInt(eventID)+1);
+    }
+
+    public void postConfirmation(){
+        Intent intent = new Intent(this, IndividualEventActivity.class);
+        intent.putExtra("eventID", eventID);
+        startActivity(intent);
     }
 }

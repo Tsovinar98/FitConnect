@@ -11,8 +11,9 @@ public class Event {
     private String maxAttendees;
     private ArrayList<UserInformation> attendingUsers;
     private String eventID;
+    private String creatorUsername;
 
-    public Event(String title, String date, String time, String location, String maxAttendees, String description, String eventID){
+    public Event(String title, String date, String time, String location, String maxAttendees, String description, String eventID, String creatorUsername){
         this.title = title;
         this.date = date;
         this.time = time;
@@ -20,6 +21,15 @@ public class Event {
         this.maxAttendees = maxAttendees;
         this.description = description;
         this.eventID = eventID;
+        this.creatorUsername = creatorUsername;
+    }
+
+    public String getCreatorUsername() {
+        return creatorUsername;
+    }
+
+    public void setCreatorUsername(String creatorUsername) {
+        this.creatorUsername = creatorUsername;
     }
 
     public String getDate() {
