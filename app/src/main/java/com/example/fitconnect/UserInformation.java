@@ -17,6 +17,9 @@ public class UserInformation {
     private String cityState = "";
     private String preferredActivities;
     private ArrayList<UserInformation> blockedUsers;
+    private ArrayList<Event> attendedEvents;
+    private ArrayList<Event> upcomingEvents;
+    private ArrayList<Event> myEvents;
 
     //constructor for logging in
     public UserInformation(String userID, String displayName, String firstName, String lastName, String email, String aboutMe, String location, String preferredActivities) {
@@ -41,7 +44,15 @@ public class UserInformation {
         this.location = address;
         this.preferredActivities = "";
         this.aboutMe = "";
+        this.blockedUsers = new ArrayList<>();
+        this.upcomingEvents = new ArrayList<>();
+        this.attendedEvents = new ArrayList<>();
+        this.myEvents = new ArrayList<>();
         formatAddress();
+    }
+
+    public void addEvent(Event e){
+        this.myEvents.add(e);
     }
 
     private void formatAddress(){
