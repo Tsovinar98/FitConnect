@@ -20,27 +20,27 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class CreateEventActivity extends AppCompatActivity {
 
-    EditText editTextTextPersonName;
+    EditText editTextTitle;
     EditText editTextDate;
     EditText editTextTime;
-    EditText editTextTextPostalAddress;
-    EditText editTextNumAttendees;
-    EditText editTextTextPersonName2;
-    Button button;
+    EditText editTextLocation;
+    EditText editTextMaxAttendees;
+    EditText editTextDescription;
+    Button buttonCreateEvent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_event);
 
-        editTextTextPersonName = findViewById(R.id.editTextTextPersonName);
-        editTextDate = findViewById(R.id.editTextDate);
-        editTextTime = findViewById(R.id.editTextTime);
-        editTextTextPostalAddress = findViewById(R.id.editTextTextPostalAddress);
-        editTextNumAttendees = findViewById(R.id.editTextNumAttendees);
-        editTextTextPersonName2 = findViewById(R.id.editTextTextPersonName2);
-
-        button.setOnClickListener(new View.OnClickListener(){
+        editTextTitle = findViewById(R.id.editText_ce_eventTitle);
+        editTextDate = findViewById(R.id.editText_ce_date);
+        editTextTime = findViewById(R.id.editText_ce_time);
+        editTextLocation = findViewById(R.id.editText_ce_location);
+        editTextMaxAttendees = findViewById(R.id.editText_ce_maxAttendees);
+        editTextDescription = findViewById(R.id.editText_ce_description);
+        buttonCreateEvent = findViewById(R.id.button_ce_createEvent);
+        buttonCreateEvent.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 createEvent();
             }
@@ -48,12 +48,12 @@ public class CreateEventActivity extends AppCompatActivity {
     }
 
     private void createEvent(){
-        final String title = editTextTextPersonName.getText().toString();
+        final String title = editTextTitle.getText().toString();
         final String date = editTextDate.getText().toString();
         final String time = editTextTime.getText().toString();
-        final String location = editTextTextPostalAddress.getText().toString();
-        final String numAttendees = editTextTextPostalAddress.getText().toString();
-        final String description = editTextTextPersonName2.getText().toString();
+        final String location = editTextLocation.getText().toString();
+        final String numAttendees = editTextMaxAttendees.getText().toString();
+        final String description = editTextDescription.getText().toString();
 
     }
 }
