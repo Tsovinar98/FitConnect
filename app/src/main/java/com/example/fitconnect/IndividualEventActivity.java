@@ -13,6 +13,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
+
 public class IndividualEventActivity extends AppCompatActivity {
 
     String eventID;
@@ -25,6 +27,7 @@ public class IndividualEventActivity extends AppCompatActivity {
     TextView textView_maxAttendees;
     TextView textView_creatorUsername;
     TextView textView_location;
+    TextView textView_description;
 
 
     @Override
@@ -42,7 +45,7 @@ public class IndividualEventActivity extends AppCompatActivity {
         textView_maxAttendees = findViewById(R.id.textView_ie_attendees);
         textView_creatorUsername = findViewById(R.id.textView_ie_username);
         textView_location = findViewById(R.id.textView_ie_location);
-
+        textView_description = findViewById(R.id.textView_ie_description);
         readIndividualEvent();
     }
 
@@ -52,8 +55,18 @@ public class IndividualEventActivity extends AppCompatActivity {
         eventRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Object userObj = dataSnapshot.getValue();
-                System.out.println("numEvents is " + userObj);
+                Object eventObj = dataSnapshot.getValue();
+                HashMap<String,String> eventMap = (HashMap<String,String>) eventObj;
+                String _creatorUsername = eventMap.get("creatorUsername");
+                String _date = eventMap.get("date");
+                String _description = eventMap.get("description");
+                String _location = eventMap.get("location");
+                String _maxAttendees = eventMap.get("maxAttendees");
+                String _time = eventMap.get("time");
+                String _title = eventMap.get("title");
+
+                Event event = new Event(_title, _date, _time, _location, _maxAttendees, _description, eventID, _creatorUsername);
+                updateUI(event);
             }
 
 
@@ -62,5 +75,15 @@ public class IndividualEventActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void updateUI(Event event){
+        textView_title.setText(event.getTitle());
+        textView_date.setText(event.getDate());
+        textView_time.setText(event.getTime());
+        textView_maxAttendees.setText(event.getMaxAttendees());
+        textView_creatorUsername.setText(event.getCreatorUsername());
+        textView_location.setText(event.getLocation());
+        textView_description.setText(event.getDescription());
     }
 }
