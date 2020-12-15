@@ -59,7 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:clickable="true"
-            app:srcCompat="@drawable/FB" />
+            app:srcCompat="@drawable/fb" />
     </LinearLayout>
 
     <LinearLayout
