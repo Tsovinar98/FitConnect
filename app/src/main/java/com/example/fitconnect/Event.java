@@ -11,15 +11,32 @@ public class Event {
     private String description;
     private UserInformation creatingUser;
     private Date date;
-    private boolean hasDeterminedLocation;
+    private String sDate;
+    private String sTime;
+    //private boolean hasDeterminedLocation;
     private Location location;
+    private String sLocation;
+    private String sAttendees;
     private ArrayList<UserInformation> attendingUsers;
-    private int maxAttendees;
-    private int numAttending;
+    //private int maxAttendees;
+    //private int numAttending;
+    private String eventID;
+
+    public Event(String title, String sdate, String stime, String slocation, String sAttendees, String description, String eventID){
+        this.title = title;
+        this.sDate = sdate;
+        this.sTime = stime;
+        this.sLocation = slocation;
+        this.sAttendees = sAttendees;
+        this.description = description;
+        this.eventID = eventID;
+    }
 
     public void addUser(UserInformation user){
         attendingUsers.add(user);
     }
+
+
 
     public String getTitle() {
         return title;
@@ -53,14 +70,6 @@ public class Event {
         this.date = date;
     }
 
-    public boolean isHasDeterminedLocation() {
-        return hasDeterminedLocation;
-    }
-
-    public void setHasDeterminedLocation(boolean hasDeterminedLocation) {
-        this.hasDeterminedLocation = hasDeterminedLocation;
-    }
-
     public Location getLocation() {
         return location;
     }
@@ -77,19 +86,4 @@ public class Event {
         this.attendingUsers = attendingUsers;
     }
 
-    public int getMaxAttendees() {
-        return maxAttendees;
-    }
-
-    public void setMaxAttendees(int maxAttendees) {
-        this.maxAttendees = maxAttendees;
-    }
-
-    public int getNumAttending() {
-        return numAttending;
-    }
-
-    public void setNumAttending(int numAttending) {
-        this.numAttending = numAttending;
-    }
 }
