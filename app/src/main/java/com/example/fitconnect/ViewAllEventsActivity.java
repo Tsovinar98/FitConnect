@@ -64,8 +64,8 @@ public class ViewAllEventsActivity extends AppCompatActivity {
                     String _time = eventMap.get("time");
                     String _title = eventMap.get("title");
                     String _eventID = eventMap.get("eventID");
-
-                    Event event = new Event(_title, _date, _time, _location, _maxAttendees, _description, _eventID, _creatorUsername);
+                    String _creatorID = eventMap.get("creatorID");
+                    Event event = new Event(_title, _date, _time, _location, _maxAttendees, _description, _eventID, _creatorUsername, _creatorID);
                     events.add(event);
 
                 }

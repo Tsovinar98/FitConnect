@@ -90,8 +90,9 @@ public class IndividualEventActivity extends AppCompatActivity {
                 String _maxAttendees = eventMap.get("maxAttendees");
                 String _time = eventMap.get("time");
                 String _title = eventMap.get("title");
+                String _creatorID = eventMap.get("creatorID");
 
-                Event event = new Event(_title, _date, _time, _location, _maxAttendees, _description, eventID, _creatorUsername);
+                Event event = new Event(_title, _date, _time, _location, _maxAttendees, _description, eventID, _creatorUsername, _creatorID);
                 updateUI(event);
             }
 

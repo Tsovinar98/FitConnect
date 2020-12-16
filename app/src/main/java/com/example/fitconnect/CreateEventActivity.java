@@ -126,7 +126,7 @@ public class CreateEventActivity extends AppCompatActivity {
         String userid = user.getUid();
         System.out.println("value of event id is"+ eventID);
         DatabaseReference eref = database.getReference("users").child(userid).child("events").child(eventID);
-        Event event = new Event(title, date, time, location, maxAttendees, description, eventID, CurrentUser.getCurrentUser().getDisplayName());
+        Event event = new Event(title, date, time, location, maxAttendees, description, eventID, CurrentUser.getCurrentUser().getDisplayName(), CurrentUser.getCurrentUser().getUserID());
         System.out.println("the event is " + event.toString());
         eref.setValue(event);
 
