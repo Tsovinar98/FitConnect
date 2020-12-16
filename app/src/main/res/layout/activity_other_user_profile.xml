@@ -16,7 +16,7 @@
         android:paddingBottom="5dp">
 
         <ImageButton
-            android:id="@+id/imageButton_settingsIcon"
+            android:id="@+id/imageButton_ou_block"
             android:layout_width="51dp"
             android:layout_height="39dp"
             android:layout_gravity="right"
@@ -26,7 +26,7 @@
             app:srcCompat="@drawable/block" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/imageView_ou_profilepic"
             android:layout_width="127dp"
             android:layout_height="139dp"
             android:layout_gravity="center_horizontal"
@@ -34,7 +34,7 @@
             app:srcCompat="@drawable/profileicon" />
 
         <TextView
-            android:id="@+id/textView_pa_fullName"
+            android:id="@+id/textView_ou_fullName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView"
@@ -43,7 +43,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textView_pa_displayName"
+            android:id="@+id/textView_ou_displayName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView"
@@ -58,7 +58,7 @@
         android:layout_marginTop="10dp">
 
         <ImageView
-            android:id="@+id/imageView_locationIcon"
+            android:id="@+id/imageView_ou_locationIcon"
             android:layout_width="45dp"
             android:layout_height="30dp"
             android:adjustViewBounds="false"
@@ -66,7 +66,7 @@
             app:srcCompat="@drawable/locationicon" />
 
         <TextView
-            android:id="@+id/textView_p_location"
+            android:id="@+id/textView_ou_location"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
@@ -80,7 +80,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView_p_aboutMeLabel"
+            android:id="@+id/textView_ou_aboutMeLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="About Me"
@@ -88,14 +88,14 @@
             android:textColor="#FFFFFF" />
 
         <TextView
-            android:id="@+id/textView_p_aboutMe"
+            android:id="@+id/textView_ou_aboutMe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView"
             android:textColor="#FFFFFF" />
 
         <TextView
-            android:id="@+id/textView_p_interestsLabel"
+            android:id="@+id/textView_ou_interestsLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textStyle="bold"
@@ -103,7 +103,7 @@
             android:textColor="#FFFFFF" />
 
         <TextView
-            android:id="@+id/textView_p_interests"
+            android:id="@+id/textView_ou_interests"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView"
