@@ -3,6 +3,7 @@ package com.example.fitconnect;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -70,16 +71,15 @@ public class ViewAllEventsActivity extends AppCompatActivity {
 
                 adapter= new CustomAdapter(events,getApplicationContext());
                 listView.setAdapter(adapter);
-//                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                    @Override
-//                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//
-//                        DataModel dataModel= dataModels.get(position);
-//
-//                        Snackbar.make(view, dataModel.getName()+"\n"+dataModel.getType()+" API: "+dataModel.getVersion_number(), Snackbar.LENGTH_LONG)
-//                                .setAction("No action", null).show();
-//                    }
-//                });
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                        Event dataModel= events.get(position);
+                        String eventID = dataModel.getEventID();
+                        expandActivity(eventID);
+                    }
+                });
             }
 
             @Override
@@ -88,6 +88,12 @@ public class ViewAllEventsActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void expandActivity(String eventID){
+        Intent intent = new Intent(this, IndividualEventActivity.class);
+        intent.putExtra("eventID", eventID);
+        startActivity(intent);
     }
 
 }
