@@ -48,7 +48,8 @@ public class ViewAllEventsActivity extends AppCompatActivity {
         eventRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                ArrayList<Object> allEventsArrayList = (ArrayList<Object>) dataSnapshot.getValue();
+                HashMap<Object, Object> eventsHashmap = (HashMap<Object,Object>) dataSnapshot.getValue();
+                ArrayList<Object> allEventsArrayList = new ArrayList<Object>(eventsHashmap.values());
                 allEventsArrayList.removeAll(Collections.singleton(null));
                 System.out.println("Events array list after null removed");
                 System.out.println(allEventsArrayList.toString());
