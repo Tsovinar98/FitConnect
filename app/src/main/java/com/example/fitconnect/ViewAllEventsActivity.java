@@ -7,10 +7,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,11 +29,14 @@ import java.util.List;
 public class ViewAllEventsActivity extends AppCompatActivity {
 
     ArrayList<Event> events = new ArrayList<>();
+    ListView listView;
+    private static CustomAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_all_events);
+        listView = findViewById(R.id.list);
         getAllEvents();
     }
 
@@ -62,6 +68,18 @@ public class ViewAllEventsActivity extends AppCompatActivity {
 
                 }
 
+                adapter= new CustomAdapter(events,getApplicationContext());
+                listView.setAdapter(adapter);
+//                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                    @Override
+//                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//
+//                        DataModel dataModel= dataModels.get(position);
+//
+//                        Snackbar.make(view, dataModel.getName()+"\n"+dataModel.getType()+" API: "+dataModel.getVersion_number(), Snackbar.LENGTH_LONG)
+//                                .setAction("No action", null).show();
+//                    }
+//                });
             }
 
             @Override
