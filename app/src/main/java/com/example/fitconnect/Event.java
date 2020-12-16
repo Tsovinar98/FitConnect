@@ -108,4 +108,16 @@ public class Event {
         this.attendingUsers = attendingUsers;
     }
 
+    @Override
+    public String toString() {
+        return "Event{" +
+                "title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", date='" + date + '\'' +
+                ", time='" + time + '\'' +
+                ", location='" + location + '\'' +
+                ", maxAttendees='" + maxAttendees + '\'' +
+                ", creatorUsername='" + creatorUsername + '\'' +
+                '}';
+    }
 }
