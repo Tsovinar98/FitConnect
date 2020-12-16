@@ -2,7 +2,14 @@ package com.example.fitconnect;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -52,9 +59,8 @@ public class ViewAllEventsActivity extends AppCompatActivity {
 
                     Event event = new Event(_title, _date, _time, _location, _maxAttendees, _description, _eventID, _creatorUsername);
                     events.add(event);
-                }
 
-                updateUI();
+                }
 
             }
 
@@ -66,10 +72,4 @@ public class ViewAllEventsActivity extends AppCompatActivity {
 
     }
 
-    public void updateUI(){
-        System.out.println("TESTMEDADDY");
-        for(int i =0; i < events.size();i++){
-            System.out.println(events.get(i).toString());
-        }
-    }
 }
