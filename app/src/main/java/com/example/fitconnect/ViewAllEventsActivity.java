@@ -5,15 +5,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -31,6 +38,7 @@ public class ViewAllEventsActivity extends AppCompatActivity {
 
     ArrayList<Event> events = new ArrayList<>();
     ListView listView;
+    FloatingActionButton fab;
     private static CustomAdapter adapter;
 
     @Override
@@ -38,7 +46,31 @@ public class ViewAllEventsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_all_events);
         listView = findViewById(R.id.list);
+        fab = findViewById(R.id.floatingActionButton);
         getAllEvents();
+
+        listView.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+                Animation aniFadeIn = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fabfadein);
+                Animation aniFadeOut = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fabfadeout);
+                if(scrollState == SCROLL_STATE_TOUCH_SCROLL){
+                    fab.animate().cancel();
+                    fab.startAnimation(aniFadeOut);
+                    fab.setVisibility(View.INVISIBLE);
+                }else{
+                    fab.animate().cancel();
+                    fab.startAnimation(aniFadeIn);
+                    fab.setVisibility(View.VISIBLE);
+                }
+
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+
+            }
+        });
     }
 
 
