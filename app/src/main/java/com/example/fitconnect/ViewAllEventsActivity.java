@@ -40,6 +40,7 @@ public class ViewAllEventsActivity extends AppCompatActivity {
     ListView listView;
     FloatingActionButton fab;
     private static CustomAdapter adapter;
+    TextView textViewLocationLabel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +48,8 @@ public class ViewAllEventsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_all_events);
         listView = findViewById(R.id.list);
         fab = findViewById(R.id.floatingActionButton);
+        textViewLocationLabel = findViewById(R.id.textView_vae_location);
+        textViewLocationLabel.setText(CurrentUser.getCurrentUser().getLocationLabel());
         getAllEvents();
 
         listView.setOnScrollListener(new AbsListView.OnScrollListener() {
@@ -71,6 +74,18 @@ public class ViewAllEventsActivity extends AppCompatActivity {
 
             }
         });
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToCreateEventPage();
+            }
+        });
+    }
+
+    public void goToCreateEventPage(){
+        Intent intent = new Intent(this, CreateEventActivity.class);
+        startActivity(intent);
     }
 
 

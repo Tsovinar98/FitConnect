@@ -51,6 +51,12 @@ public class UserInformation {
         formatAddress();
     }
 
+    public String getLocationLabel(){
+        int lastComma = cityState.lastIndexOf(",");
+        String locationLabel = cityState.substring(0,lastComma-5);
+        return locationLabel;
+    }
+
     public void addEvent(Event e){
         this.myEvents.add(e);
     }
