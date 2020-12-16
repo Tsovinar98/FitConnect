@@ -20,6 +20,7 @@ import java.util.HashMap;
 public class IndividualEventActivity extends AppCompatActivity {
 
     String eventID;
+    String creatorID;
     ImageButton imageButton_cancel;
     ImageButton imageButton_profile;
     Button button_attending;
@@ -63,6 +64,19 @@ public class IndividualEventActivity extends AppCompatActivity {
                 goToAllEvents();
             }
         });
+
+        textView_creatorUsername.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToCreatorProfile();
+            }
+        });
+    }
+
+    public void goToCreatorProfile(){
+        Intent intent = new Intent(this, OtherUserProfileActivity.class);
+        intent.putExtra("creatorID", creatorID);
+        startActivity(intent);
     }
 
     public void goToProfile(){
@@ -91,7 +105,7 @@ public class IndividualEventActivity extends AppCompatActivity {
                 String _time = eventMap.get("time");
                 String _title = eventMap.get("title");
                 String _creatorID = eventMap.get("creatorID");
-
+                creatorID = eventMap.get("creatorID");
                 Event event = new Event(_title, _date, _time, _location, _maxAttendees, _description, eventID, _creatorUsername, _creatorID);
                 updateUI(event);
             }
