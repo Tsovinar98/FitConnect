@@ -132,7 +132,6 @@ public class CreateEventActivity extends AppCompatActivity {
         Event event = new Event(title, date, time, location, maxAttendees, description, eventID, CurrentUser.getCurrentUser().getDisplayName(), CurrentUser.getCurrentUser().getUserID(), attendingUsers);
         System.out.println("the event is " + event.toString());
         eref.setValue(event);
-
         writeEventToDatabase(event);
     }
 

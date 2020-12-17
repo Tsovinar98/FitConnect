@@ -94,7 +94,9 @@ public class IndividualEventActivity extends AppCompatActivity {
 
     public void attendClicked(){
         button_attending.setText("✓ Attending Activity");
-        CurrentUser.getCurrentUser().addEvent(eventID);
+        CurrentUser.getCurrentUser().addEvent(event);
+        CurrentUser.getCurrentUser().addEvent(event.getEventID());
+        System.out.println("Event attended, arraylist is now " + CurrentUser.getCurrentUser().getUpcomingTest().size());
     }
 
     public void shareEvent(){
@@ -158,6 +160,7 @@ public class IndividualEventActivity extends AppCompatActivity {
 
             }
         });
+
     }
 
     public void updateUI(Event event){
@@ -168,5 +171,8 @@ public class IndividualEventActivity extends AppCompatActivity {
         textView_creatorUsername.setText(event.getCreatorUsername());
         textView_location.setText(event.getLocation());
         textView_description.setText(event.getDescription());
+        if(CurrentUser.getCurrentUser().getUpcomingEvents().contains(event.getEventID())){
+            button_attending.setText("✓ Attending Activity");
+        }
     }
 }

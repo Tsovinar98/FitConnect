@@ -21,6 +21,8 @@ public class UserInformation {
     private ArrayList<String> upcomingEvents;
     private ArrayList<Event> myEvents;
 
+    private ArrayList<Event> upcomingTest;
+
     //constructor for logging in
     public UserInformation(String userID, String displayName, String firstName, String lastName, String email, String aboutMe, String location, String preferredActivities) {
         this.userID = userID;
@@ -58,7 +60,17 @@ public class UserInformation {
     }
 
     public void addEvent(Event e){
-        this.myEvents.add(e);
+        if(this.upcomingTest == null){
+            this.upcomingTest = new ArrayList<>();
+        }
+        this.upcomingTest.add(e);
+    }
+
+    public ArrayList<Event> getUpcomingTest() {
+        if(upcomingTest==null){
+            upcomingTest = new ArrayList<>();
+        }
+        return upcomingTest;
     }
 
     private void formatAddress(){
@@ -85,6 +97,14 @@ public class UserInformation {
         }
         upcomingEvents.add(eventID);
         System.out.println("EVENT ADDED " + upcomingEvents.toString());
+    }
+
+    public ArrayList<String> getUpcomingEvents() {
+
+        if(upcomingEvents == null){
+            upcomingEvents = new ArrayList<>();
+        }
+        return upcomingEvents;
     }
 
     public String getStreetAddress() {

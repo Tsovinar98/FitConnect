@@ -1,5 +1,6 @@
 package com.example.fitconnect;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,7 +11,18 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -20,6 +32,10 @@ import android.widget.TextView;
 public class CardFragment extends Fragment {
     private static final String ARG_COUNT = "param1";
     private Integer counter;
+    private static CustomAdapter adapter;
+    String creatorID;
+    ArrayList<Event> upcomingEvents = new ArrayList<>();
+    ListView listViewUpcoming;
     public CardFragment() {
         // Required empty public constructor
     }
@@ -64,5 +80,29 @@ public class CardFragment extends Fragment {
             textView_location.setText(CurrentUser.getCurrentUser().getCityState());
         }
 
+        if(counter==1){
+            final ArrayList<Event> eventTest = CurrentUser.getCurrentUser().getUpcomingTest();
+            if(eventTest.size()>0 ) {
+                listViewUpcoming = view.findViewById(R.id.listView_upcoming);
+                adapter = new CustomAdapter(eventTest, getActivity().getApplicationContext());
+                listViewUpcoming.setAdapter(adapter);
+                listViewUpcoming.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Event dataModel = eventTest.get(position);
+                        String eventID = dataModel.getEventID();
+                        expandActivity(eventID);
+                    }
+                });
+            }
+        }
+
     }
+
+    public void expandActivity(String eventID){
+        Intent intent = new Intent(getContext(), IndividualEventActivity.class);
+        intent.putExtra("eventID", eventID);
+        startActivity(intent);
+    }
+
 }
