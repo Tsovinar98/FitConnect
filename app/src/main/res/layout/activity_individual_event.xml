@@ -101,16 +101,10 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="#000000"
         android:orientation="vertical"
         android:paddingTop="20dp">
-
-        <TextView
-            android:id="@+id/textView_ie_location"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
 
         <Button
             android:id="@+id/button_ie_attend"
@@ -129,12 +123,36 @@
         </Button>
 
         <TextView
+            android:id="@+id/textView_ie_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+
+        <TextView
             android:id="@+id/textView_ie_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
             android:text="Event Description"
             android:textColor="#FFFFFF"
-            android:layout_marginHorizontal="10dp"
             android:textSize="18sp" />
+
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight=".5"
+        android:background="#000000"
+        android:orientation="vertical">
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/imageButton_ie_share"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#000000"
+        app:srcCompat="?attr/actionModeShareDrawable" />
+
 </LinearLayout>

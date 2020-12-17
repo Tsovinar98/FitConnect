@@ -34,7 +34,7 @@ public class IndividualEventActivity extends AppCompatActivity {
     TextView textView_creatorUsername;
     TextView textView_location;
     TextView textView_description;
-
+    ImageButton imageButton_share;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +52,7 @@ public class IndividualEventActivity extends AppCompatActivity {
         textView_creatorUsername = findViewById(R.id.textView_ie_username);
         textView_location = findViewById(R.id.textView_ie_location);
         textView_description = findViewById(R.id.textView_ie_description);
+        imageButton_share = findViewById(R.id.imageButton_ie_share);
         readIndividualEvent();
 
         imageButton_profile.setOnClickListener(new View.OnClickListener() {
@@ -68,12 +69,33 @@ public class IndividualEventActivity extends AppCompatActivity {
             }
         });
 
+        imageButton_share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                shareEvent();
+            }
+        });
+
         textView_creatorUsername.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 goToCreatorProfile();
             }
         });
+    }
+
+    public void shareEvent(){
+        Intent intent = new Intent(android.content.Intent.ACTION_SEND);
+        String shareSubject = "I found this cool event on FitConnect!\n";
+        String shareBody = textView_title.getText().toString();
+        shareBody = shareBody.concat("\n" + textView_date.getText().toString() + " | " + textView_time.getText().toString());
+        shareBody = shareBody.concat("\n" + textView_location.getText().toString());
+        shareBody = shareBody.concat("\n" + textView_description.getText().toString());
+        intent.setType("text/plain");
+        intent.putExtra(android.content.Intent.EXTRA_SUBJECT, shareSubject);
+        intent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+        /*Fire!*/
+        startActivity(Intent.createChooser(intent, "Share"));
     }
 
     public void goToCreatorProfile(){
