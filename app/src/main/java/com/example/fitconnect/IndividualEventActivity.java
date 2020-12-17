@@ -15,7 +15,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 public class IndividualEventActivity extends AppCompatActivity {
 
@@ -106,7 +109,11 @@ public class IndividualEventActivity extends AppCompatActivity {
                 String _title = eventMap.get("title");
                 String _creatorID = eventMap.get("creatorID");
                 creatorID = eventMap.get("creatorID");
-                Event event = new Event(_title, _date, _time, _location, _maxAttendees, _description, eventID, _creatorUsername, _creatorID);
+                Object OattendingUserIDs =  eventMap.get("attendingUserIDs");
+                System.out.println(OattendingUserIDs.toString());
+                ArrayList<String> attendingUserIDs = (ArrayList) OattendingUserIDs;
+
+                Event event = new Event(_title, _date, _time, _location, _maxAttendees, _description, eventID, _creatorUsername, _creatorID, (ArrayList<String>) attendingUserIDs);
                 updateUI(event);
             }
 

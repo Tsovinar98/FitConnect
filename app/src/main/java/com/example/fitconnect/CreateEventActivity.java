@@ -25,6 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.ls.LSOutput;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class CreateEventActivity extends AppCompatActivity {
@@ -126,7 +127,9 @@ public class CreateEventActivity extends AppCompatActivity {
         String userid = user.getUid();
         System.out.println("value of event id is"+ eventID);
         DatabaseReference eref = database.getReference("users").child(userid).child("events").child(eventID);
-        Event event = new Event(title, date, time, location, maxAttendees, description, eventID, CurrentUser.getCurrentUser().getDisplayName(), CurrentUser.getCurrentUser().getUserID());
+        ArrayList<String> attendingUsers = new ArrayList<String>();
+        attendingUsers.add(userid);
+        Event event = new Event(title, date, time, location, maxAttendees, description, eventID, CurrentUser.getCurrentUser().getDisplayName(), CurrentUser.getCurrentUser().getUserID(), attendingUsers);
         System.out.println("the event is " + event.toString());
         eref.setValue(event);
 

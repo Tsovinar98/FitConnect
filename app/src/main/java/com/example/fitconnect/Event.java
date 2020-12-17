@@ -9,12 +9,12 @@ public class Event {
     private String time;
     private String location;
     private String maxAttendees;
-    private ArrayList<UserInformation> attendingUsers;
+    private ArrayList<String> attendingUserIDs;
     private String eventID;
     private String creatorUsername;
     private String creatorID;
 
-    public Event(String title, String date, String time, String location, String maxAttendees, String description, String eventID, String creatorUsername, String creatorID){
+    public Event(String title, String date, String time, String location, String maxAttendees, String description, String eventID, String creatorUsername, String creatorID, ArrayList<String> attentingUserIDs){
         this.title = title;
         this.date = date;
         this.time = time;
@@ -24,6 +24,15 @@ public class Event {
         this.eventID = eventID;
         this.creatorUsername = creatorUsername;
         this.creatorID = creatorID;
+        this.attendingUserIDs = attentingUserIDs;
+    }
+
+    public ArrayList<String> getAttendingUserIDs() {
+        return attendingUserIDs;
+    }
+
+    public void setAttendingUserIDs(ArrayList<String> attendingUserIDs) {
+        this.attendingUserIDs = attendingUserIDs;
     }
 
     public String getCreatorID() {
@@ -83,7 +92,7 @@ public class Event {
     }
 
     public void addUser(UserInformation user){
-        attendingUsers.add(user);
+        attendingUserIDs.add(user.getUserID());
     }
 
     public String getTitle() {
@@ -110,12 +119,12 @@ public class Event {
         this.creatingUser = creatingUser;
     }
 
-    public ArrayList<UserInformation> getAttendingUsers() {
-        return attendingUsers;
+    public ArrayList<String> getAttendingUsers() {
+        return attendingUserIDs;
     }
 
-    public void setAttendingUsers(ArrayList<UserInformation> attendingUsers) {
-        this.attendingUsers = attendingUsers;
+    public void setAttendingUsers(ArrayList<String> attendingUsers) {
+        this.attendingUserIDs = attendingUsers;
     }
 
     @Override

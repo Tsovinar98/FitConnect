@@ -112,7 +112,11 @@ public class ViewAllEventsActivity extends AppCompatActivity {
                     String _title = eventMap.get("title");
                     String _eventID = eventMap.get("eventID");
                     String _creatorID = eventMap.get("creatorID");
-                    Event event = new Event(_title, _date, _time, _location, _maxAttendees, _description, _eventID, _creatorUsername, _creatorID);
+                    Object OattendingUserIDs =  eventMap.get("attendingUserIDs");
+                    System.out.println(OattendingUserIDs.toString());
+                    ArrayList<String> attendingUserIDs = (ArrayList) OattendingUserIDs;
+
+                    Event event = new Event(_title, _date, _time, _location, _maxAttendees, _description, _eventID, _creatorUsername, _creatorID, (ArrayList<String>) attendingUserIDs);
                     events.add(event);
 
                 }
