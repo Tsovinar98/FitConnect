@@ -120,7 +120,7 @@ public class LoginActivity extends AppCompatActivity {
                                     String _email = map.get("email");
                                     UserInformation _userInfo = new UserInformation(_userID, _displayName, _firstName, _lastName, _email, _aboutMe, _location, _preferredActivities);
                                     CurrentUser.setCurrentUser(_userInfo);
-                                    Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
+                                    Intent intent = new Intent(LoginActivity.this, ViewAllEventsActivity.class);
                                     startActivity(intent);
                                 }
 

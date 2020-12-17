@@ -41,6 +41,7 @@ public class ViewAllEventsActivity extends AppCompatActivity {
     FloatingActionButton fab;
     private static CustomAdapter adapter;
     TextView textViewLocationLabel;
+    ImageButton imageButton_profile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +50,15 @@ public class ViewAllEventsActivity extends AppCompatActivity {
         listView = findViewById(R.id.list);
         fab = findViewById(R.id.floatingActionButton);
         textViewLocationLabel = findViewById(R.id.textView_vae_location);
+        imageButton_profile = findViewById(R.id.imageButton_vae_profile);
         textViewLocationLabel.setText(CurrentUser.getCurrentUser().getLocationLabel());
+
+        imageButton_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToProfile();
+            }
+        });
         getAllEvents();
 
         listView.setOnScrollListener(new AbsListView.OnScrollListener() {
@@ -88,6 +97,10 @@ public class ViewAllEventsActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void goToProfile(){
+        Intent intent = new Intent(this, ProfileActivity.class);
+        startActivity(intent);
+    }
 
     public void getAllEvents(){
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference();

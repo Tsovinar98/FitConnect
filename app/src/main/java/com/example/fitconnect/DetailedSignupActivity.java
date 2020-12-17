@@ -58,7 +58,7 @@ public class DetailedSignupActivity extends AppCompatActivity {
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                 DatabaseReference ref = database.getReference("users").child(CurrentUser.getCurrentUser().getUserID());
                 ref.setValue(CurrentUser.getCurrentUser());
-                Intent intent = new Intent(DetailedSignupActivity.this, ProfileActivity.class);
+                Intent intent = new Intent(DetailedSignupActivity.this, ViewAllEventsActivity.class);
                 startActivity(intent);
             }
         });
