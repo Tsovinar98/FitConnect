@@ -35,6 +35,7 @@ public class IndividualEventActivity extends AppCompatActivity {
     TextView textView_location;
     TextView textView_description;
     ImageButton imageButton_share;
+    Event event;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +70,13 @@ public class IndividualEventActivity extends AppCompatActivity {
             }
         });
 
+        button_attending.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                attendClicked();
+            }
+        });
+
         imageButton_share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -82,6 +90,11 @@ public class IndividualEventActivity extends AppCompatActivity {
                 goToCreatorProfile();
             }
         });
+    }
+
+    public void attendClicked(){
+        button_attending.setText("✓ Attending Activity");
+        CurrentUser.getCurrentUser().addEvent(eventID);
     }
 
     public void shareEvent(){
@@ -135,7 +148,7 @@ public class IndividualEventActivity extends AppCompatActivity {
                 System.out.println(OattendingUserIDs.toString());
                 ArrayList<String> attendingUserIDs = (ArrayList) OattendingUserIDs;
 
-                Event event = new Event(_title, _date, _time, _location, _maxAttendees, _description, eventID, _creatorUsername, _creatorID, (ArrayList<String>) attendingUserIDs);
+                event = new Event(_title, _date, _time, _location, _maxAttendees, _description, eventID, _creatorUsername, _creatorID, (ArrayList<String>) attendingUserIDs);
                 updateUI(event);
             }
 

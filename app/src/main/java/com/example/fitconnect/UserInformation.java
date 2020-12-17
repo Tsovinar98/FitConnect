@@ -18,7 +18,7 @@ public class UserInformation {
     private String preferredActivities;
     private ArrayList<UserInformation> blockedUsers;
     private ArrayList<Event> attendedEvents;
-    private ArrayList<Event> upcomingEvents;
+    private ArrayList<String> upcomingEvents;
     private ArrayList<Event> myEvents;
 
     //constructor for logging in
@@ -77,6 +77,14 @@ public class UserInformation {
         cityState = cityState.replaceFirst(",", "");
         System.out.println("Street Address: " + streetAddress);
         System.out.println("CityState: " + cityState);
+    }
+
+    public void addEvent(String eventID){
+        if(upcomingEvents==null){
+            upcomingEvents = new ArrayList<>();
+        }
+        upcomingEvents.add(eventID);
+        System.out.println("EVENT ADDED " + upcomingEvents.toString());
     }
 
     public String getStreetAddress() {

@@ -50,7 +50,6 @@ public class Event {
     public void setCreatorUsername(String creatorUsername) {
         this.creatorUsername = creatorUsername;
     }
-
     public String getDate() {
         return date;
     }
