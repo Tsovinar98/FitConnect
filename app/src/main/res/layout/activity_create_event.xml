@@ -37,7 +37,7 @@
             android:adjustViewBounds="false"
             android:background="#77F3E9"
             android:scaleType="fitCenter"
-            app:srcCompat="@drawable/profilepic" />
+            app:srcCompat="@drawable/ryanlogo" />
     </LinearLayout>
 
     <TextView

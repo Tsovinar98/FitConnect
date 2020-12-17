@@ -11,6 +11,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
         android:layout_weight="1">
 
         <TextView
@@ -42,6 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
+        android:paddingLeft="5dp"
         android:textColor="#FFFFFF"
         android:textSize="12sp"
         tools:text="Location" />
@@ -51,6 +53,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="12sp"
+        android:paddingLeft="5dp"
         android:layout_weight="1"
         android:text="TextView"
         android:textColor="#FFFFFF"
