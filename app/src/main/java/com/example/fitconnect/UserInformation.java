@@ -61,6 +61,9 @@ public class UserInformation {
     }
 
     public ArrayList<Event> getMyEvents() {
+        if(myEvents==null){
+            myEvents = new ArrayList<>();
+        }
         return myEvents;
     }
 

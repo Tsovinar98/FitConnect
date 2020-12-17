@@ -36,6 +36,7 @@ public class CardFragment extends Fragment {
     String creatorID;
     ArrayList<Event> upcomingEvents = new ArrayList<>();
     ListView listViewUpcoming;
+    ListView listViewMyEvents;
     public CardFragment() {
         // Required empty public constructor
     }
@@ -90,6 +91,23 @@ public class CardFragment extends Fragment {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Event dataModel = eventTest.get(position);
+                        String eventID = dataModel.getEventID();
+                        expandActivity(eventID);
+                    }
+                });
+            }
+        }
+
+        if(counter == 2){
+            final ArrayList<Event> myEvents = CurrentUser.getCurrentUser().getMyEvents();
+            if(myEvents.size()>0 ) {
+                listViewMyEvents = view.findViewById(R.id.listViewMyEvents);
+                adapter = new CustomAdapter(myEvents, getActivity().getApplicationContext());
+                listViewMyEvents.setAdapter(adapter);
+                listViewMyEvents.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Event dataModel = myEvents.get(position);
                         String eventID = dataModel.getEventID();
                         expandActivity(eventID);
                     }
