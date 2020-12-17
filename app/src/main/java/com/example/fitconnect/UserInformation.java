@@ -53,6 +53,17 @@ public class UserInformation {
         formatAddress();
     }
 
+    public void addMyEvent(Event e){
+        if(myEvents==null){
+            myEvents = new ArrayList<>();
+        }
+        myEvents.add(e);
+    }
+
+    public ArrayList<Event> getMyEvents() {
+        return myEvents;
+    }
+
     public String getLocationLabel(){
         int lastComma = cityState.lastIndexOf(",");
         String locationLabel = cityState.substring(0,lastComma-5);
