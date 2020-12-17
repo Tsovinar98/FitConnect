@@ -54,7 +54,7 @@ public class ProfileActivity extends AppCompatActivity {
                                 tab.setText("UPCOMING EVENTS");
                                 break;
                             case 2:
-                                tab.setText("ATTENDED EVENTS");
+                                tab.setText("MY EVENTS");
                                 break;
                         }
                     }
